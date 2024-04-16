@@ -1,4 +1,15 @@
-APR: <%=@apr%>% <br>
-Number of years: <%=@n%> <br>
-Principal: $<%=@n%>
-Payment: $<%=@n%>
+
+<form action = "/payment/results">
+
+<label for = "first"> APR </label> <br>
+<input id = "first" type = "text" name = "apr" placeholder = "E.g. 5.42?"> <br>
+
+<label for = "second"> Number of years </label> <br>
+<input id = "second" type = "text" name = "years" placeholder = "How many years to repay?"> <br>
+
+<label for = "third"> Principal </label> <br>
+<input id = "third" type = "text" name = "principal" placeholder = "How much principal?"> <br> 
+
+<button> Calculate monthly payment </button>
+
+</form>

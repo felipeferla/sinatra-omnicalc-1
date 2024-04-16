@@ -51,13 +51,14 @@ get("/payment/new") do
 
 end
 
-get("/payment/new") do
+get("/payment/results") do
   @apr = params.fetch("apr").to_f
   @apr_adj = @apr / 100 / 12
-  @n = params.fetch("remaining").to_i
+  @n = params.fetch("years").to_i
   @n_adj = @n * 12
+  @principal = params.fetch("principal").to_i
 
-  @payment = @apr * @pv / (1 - (1 + @apr) ^ -@n)
+  @payment = @apr_adj * @principal / (1 - (1 + @apr_adj) ** -@n_adj)
 
   erb(:payment_results)
 end
