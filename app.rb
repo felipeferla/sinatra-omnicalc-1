@@ -44,12 +44,20 @@ get("/random/results") do
   erb(:random_results)
 end
 
+
 get("/payment/new") do
-  @apr = params.fetch("apr").to_i
+
+  erb(:payment)
+
+end
+
+get("/payment/new") do
+  @apr = params.fetch("apr").to_f
+  @apr_adj = @apr / 100 / 12
   @n = params.fetch("remaining").to_i
-  @pv = params.fetch("pv").to_i
+  @n_adj = @n * 12
 
   @payment = @apr * @pv / (1 - (1 + @apr) ^ -@n)
 
-  erb(:payment)
+  erb(:payment_results)
 end
