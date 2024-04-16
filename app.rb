@@ -29,15 +29,22 @@ get("/square_root/new") do
 
 end
 
-get("/payment/new") do
+
+get("/random/new") do
+
+erb(:random)
+
+end
+get("/random/results") do
+
   @min = params.fetch("min").to_i
   @max = params.fetch("max").to_i
   @result = rand(@min..@max)
 
-  erb(:random)
+  erb(:random_results)
 end
 
-get("/random/new") do
+get("/payment/new") do
   @apr = params.fetch("apr").to_i
   @n = params.fetch("remaining").to_i
   @pv = params.fetch("pv").to_i
